@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency 'amivoice_dialog_module'
+  spec.add_dependency 'amivoice_dialog_module', '1.2.1'
   spec.add_dependency 'rake'
   spec.add_dependency 'whenever'
 

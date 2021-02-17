@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     virtual_agent_compact_app (0.1.0)
-      amivoice_dialog_module
+      amivoice_dialog_module (= 1.2.1)
       rake
       whenever
 
@@ -25,7 +25,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
-    amivoice_dialog_module (1.2.2)
+    amivoice_dialog_module (1.2.1)
       activeresource
       activesupport
       colorize
