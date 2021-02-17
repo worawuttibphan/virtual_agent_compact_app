@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml xmlns="http://www.w3.org/2001/vxml"
+      xml:lang="<%=@language%>"
+      version="2.1"
+      application="root.vxml"
+      <% if Settings.gvp_extension_enable %>
+      xmlns:gvp="http://www.genesyslab.com/2006/vxml21-extension"
+      <% end %>
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.w3.org/2001/vxml
+                          http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.xsd">
+
+  <form id="<%=@block_name%>">
+    <block name="<%=@block_name%>">
+      <script>
+        var IntentID = '901';
+      </script>
+      <%= log("Too many errors") %>
+      <prompt bargein="false">
+        <audio src="<%=prompt_path('transfer_to_agent')%>"/>
+      </prompt>
+      <%- if Settings.is_a_part_of_call_flow %>
+      <return namelist="IntentID" />
+      <%- else %>
+      <exit />
+      <%- end %>
+    </block>
+  </form>
+</vxml>

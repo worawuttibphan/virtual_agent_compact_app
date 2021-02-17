@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml xmlns="http://www.w3.org/2001/vxml"
+      xml:lang="<%=@language%>"
+      version="2.1"
+      application="root.vxml"
+      <% if Settings.gvp_extension_enable %>
+      xmlns:gvp="http://www.genesyslab.com/2006/vxml21-extension"
+      <% end %>
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.w3.org/2001/vxml
+                          http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.xsd">
+
+  <form id="<%=@block_name%>">
+    <%- unless SystemErrorBlock.namelist.empty? %>
+    <script>
+      <%- SystemErrorBlock.namelist.each do |k, v| %>
+        <%- if v.instance_of? String %>
+      var <%=k.to_s%> = '<%=v%>';
+        <%- else %>
+      var <%=k.to_s%> = <%=v%>;
+        <%- end %>
+      <%- end %>
+    </script>
+    <%- end %>
+
+    <%- unless SystemErrorBlock.prompts.empty? %>
+    <block name="prompting">
+      <prompt bargein="false">
+        <%- SystemErrorBlock.prompts.each do |audio_filename| %>
+          <audio src="<%=prompt_path(audio_filename)%>"/>
+        <%- end %>
+      </prompt>
+    </block>
+    <%- end %>
+
+    <block name="call_ending">
+      <script>
+        application.call_end_time = application.dialog_end_time = (new Date()).toString();
+        var dialog_name = application.current_dialog_name;
+        var destination = "System Error";
+      </script>
+
+      <%- unless Settings.is_a_part_of_call_flow %>
+      <if cond="application.call_end_action_is_called == false" >
+        <%= call_end_action("destination dialog_name") %>
+        <script>
+          application.call_end_action_is_called = true;
+        </script>
+      </if>
+      <exit/>
+      <%- else %>
+      <%- if SystemErrorBlock.namelist.empty? %>
+      <return/>
+      <%- else %>
+      <return namelist="<%=SystemErrorBlock.namelist.map {|k,v|k.to_s}.join(' ') %>"/>
+      <%- end %>
+      <%- end %>
+    </block>
+  </form>
+</vxml>

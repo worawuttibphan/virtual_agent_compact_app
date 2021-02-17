@@ -1,0 +1,13 @@
+welcome.wav                             สวัสดีค่ะ
+please_say_yes_or_no.wav                กรุณาตอบ ใช่หรือ ไม่ เท่านั้นคะ
+sorry_i_cannot_understand_you.wav       ขอโทษค่ะ อาจจะเข้าใจผิด
+sorry_i_cannot_understand_you_again.wav ขอโทษค่ะ อาจจะยังเข้าใจผิด
+sorry_i_cannot_hear_you.wav             ขอโทษค่ะ ไม่ได้ยินเสียงของท่านนะคะ
+sorry_i_cannot_hear_you_again.wav       ขอโทษค่ะ ยังไม่ได้ยินเสียงของท่านนะคะ
+can_you_say_yes_or_no_again.wav         กรุณาตอบ ใช่ หรือไม่ อีกครั้งนะคะ
+can_you_say_again.wav                   รบกวนตอบอีกครั้งนะคะ
+is_it_correct.wav                       ถูกต้องมั้ยคะ
+transfer_to_agent.wav                   กรุณารอสักครู่นะคะ ระบบจะนำสายของท่านไปยังเจ้าหน้าที่ เพื่อให้บริการต่อ ขอบคุณค่ะ
+service_unavailable.wav                 ขออภัยค่ะ ขณะนี้ระบบไม่สามารถใช้งานได้ชั่วคราว กรุณาลองใหม่อีกครั้งนะคะ
+please_say_your_message.wav             โปรดฝากข้อความไว้คะ
+thank_you.wav                           ขอบคุณคะ

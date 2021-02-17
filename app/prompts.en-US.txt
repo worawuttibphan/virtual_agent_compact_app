@@ -1,0 +1,13 @@
+welcome.wav                                Welcome, dialog module first application.
+please_say_yes_or_no.wav                   Please say yes or no.
+sorry_i_cannot_understand_you.wav          Sorry, I cannot understand you.
+sorry_i_cannot_understand_you_again.wav    Sorry, I cannot understand you again.
+sorry_i_cannot_hear_you.wav                Sorry, I cannot hear you.
+sorry_i_cannot_hear_you_again.wav          Sorry, I cannot hear you again.
+can_you_say_yes_or_no_again.wav            Can you say yes or no again?
+can_you_say_again.wav                      Can you say again?
+is_it_correct.wav                          Is it correct?
+transfer_to_agent.wav                      I will transfer this call to agent.  Please wait a moment.
+service_unavailable.wav                    Service faced technical difficulty.
+please_say_your_message.wav                Please say your message.
+thank_you.wav                              Thank you for your call.

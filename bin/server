@@ -1,0 +1,10 @@
+#!/bin/bash
+
+PORT=4567
+ADDRESS=0.0.0.0
+
+if [ ! -z $1 ]; then
+   PORT=$1
+fi
+
+RACK_ENV=development bundle exec rerun "rackup -o ${ADDRESS} -p ${PORT}"

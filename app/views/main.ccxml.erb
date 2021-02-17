@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ccxml version="1.0" xmlns="http://www.w3.org/2002/09/ccxml">
+  <var name="state0" expr="'init'"/>
+  <var name="in_connection_id" />
+  <var name="out_connection_id" />
+  <var name="dialog_id" />
+  <var name="vxml_maxtime"/>
+  <var name="URI"/>
+  <var name="results"/>
+
+  <eventprocessor statevariable="state0">
+    <!--
+        Incomming call state machine working with dialog module vxml
+        ============================================================
+    -->
+
+    <!--
+        Deal with an incoming call
+    -->
+    <transition state="init" event="connection.alerting">
+      <assign name="in_connection_id" expr="event$.connectionid"/>
+      <accept/>
+    </transition>
+
+    <!--
+        Call is connected so lets start the dialog
+    -->
+    <transition state="init" event="connection.connected">
+      <dialogstart src="'main.vxml'"
+                   namelist="in_connection_id"
+                   dialogid="dialog_id"/>
+      <assign name="state0" expr="'connected'" />
+    </transition>
+
+    <!--
+        Dialog is active
+    -->
+    <transition state="connected" event="dialog.started">
+      <assign name="state0" expr="'in_vxml_session'"/>
+    </transition>
+
+    <!--
+        Dialog could not be started in some reasons
+    -->
+    <transition state="connected" event="error.dialog.notstarted">
+      <exit/>
+    </transition>
+
+    <!--
+        Dialog requests that we disconnect the call
+    -->
+    <transition state="in_vxml_session" event="dialog.disconnect">
+      <disconnect connectionid="event$.connectionid" />
+      <assign name="state0" expr="'disconnecting'" />
+    </transition>
+
+    <!--
+        We have disconnected the call. Do a dialog terminate to the dialog.
+        (sending "connection.disconnect.hangup" to vxml application)
+    -->
+    <transition state="disconnecting" event="connection.disconnected">
+      <dialogterminate dialogid="dialog_id"/>
+    </transition>
+
+    <!--
+        Dialog has exited after we disconnected the call.
+        We just are going to exit from this CCXML session.
+    -->
+    <transition state="disconnecting" event="dialog.exit">
+      <exit/>
+    </transition>
+
+    <!--
+        The caller disconnected. We need to send the event up to
+        the Dialog and change our state.
+        (sending "connection.disconnect.hangup" to vxml application)
+    -->
+    <transition state="in_vxml_session" event="connection.disconnected">
+      <dialogterminate dialogid="dialog_id"/>
+      <assign name="state0" expr="'user_disconnect'" />
+    </transition>
+
+    <!--
+        Dialog has exited after the caller hungup.
+        We just are going to exit from this CCXML session.
+    -->
+    <transition state="user_disconnect" event="dialog.exit">
+      <exit/>
+    </transition>
+
+    <!--
+        Handle a transfer request from a VXML script
+        ============================================
+    -->
+    <transition state="in_vxml_session" event="dialog.transfer">
+      <!-- Branch on transfer type -->
+      <if cond="event$.type == 'blind'">
+        <!-- Bridge == false. We are going to just redirect the call -->
+
+        <assign name="state0" expr="'redirecting'" />
+
+        <!-- And redirect to the uri specified in the event -->
+        <redirect connectionid="in_connection_id" dest="event$.uri" />
+
+        <!-- Just send the success event to the dialog -->
+        <send name="'connection.disconnect.transfer'"
+              target="dialog_id"
+              targettype="'dialog'"/>
+      <else/>
+        <!-- Bridge == true. In this case we need to place a call and bridge the calls -->
+        <!-- save off maxtime -->
+        <assign name="vxml_maxtime" expr="event$.maxtime" />
+
+        <!-- Update our state var -->
+        <assign name="state0" expr="'calling'" />
+
+        <!-- Place the call using the values from the transfer request -->
+        <assign name="URI" expr="event$.uri" />
+        <createcall dest="event$.uri"
+                    connectionid="out_connection_id"
+                    aai="event$.aai"
+                    timeout="event$.connecttimeout"/>
+      </if>
+    </transition>
+
+    <!--
+        We will get the following events but we do not do anything
+        because in VoiceXML 2.0 you just ignore redirect errors.
+        We do however process the dialog.exit and shutdown
+        the CCXML Session.
+    -->
+    <transition state="redirecting" event="connection.redirected">
+    </transition>
+    <transition state="redirecting" event="connection.redirect.failed">
+    </transition>
+    <transition state="redirecting" event="dialog.exit">
+      <exit/>
+    </transition>
+
+    <!--
+         Handle bridge=true Events
+         This first event is for if the outbound call failed.
+    -->
+    <transition state="calling" event="connection.failed">
+      <!-- Just send the error event to the dialog -->
+      <assign name="results" expr="event$.reason"/>
+      <send name="'dialog.transfer.complete'"
+            target="dialog_id"
+            targettype="'dialog'"
+            namelist="results" />
+      <!-- Update our state var back to the original state -->
+      <assign name="state0" expr="'in_vxml_session'" />
+    </transition>
+
+    <!--
+         The outbound call has been answered.
+    -->
+    <transition state="calling" event="connection.connected">
+      <!-- Update our state var back to show that we are connected -->
+      <assign name="state0" expr="'outgoing_call_active'" />
+      <!-- Unjoin the calls before it can be connected to other call -->
+      <join id1=" dialog_id" id2=" in_connection_id" duplex="'half'" dtmfclamp="false"/>
+    </transition>
+
+    <!--
+         Now connect the outbound.
+    -->
+    <transition state="outgoing_call_active" event="conference.joined">
+      <!-- Join the two calls together -->
+      <join id1="in_connection_id" id2="out_connection_id" duplex="'full'" />
+    </transition>
+
+    <!--
+         We will get here once the join completes.
+    -->
+    <transition state="outgoing_call_active" event="conference.joined">
+      <!-- If maxtime has been set then we setup a timer -->
+      <if cond="vxml_maxtime != null">
+        <send name="'vxml_maxtime'"
+              target="session.id"
+              delay="vxml_maxtime"
+              sendid="maxtime_sendid"/>
+      </if>
+    </transition>
+
+    <!--
+         Deal with someone disconnecting.
+    -->
+    <transition state="outgoing_call_active" event="connection.disconnected">
+      <!-- Cancel any maxtime events that are waiting to be fired -->
+      <if cond="maxtime_sendid != null">
+        <cancel sendid="maxtime_sendid"/>
+        <assign name="maxtime_sendid" expr="null"/>
+      </if>
+
+      <!-- Branch off based on what call leg this is for and send
+           the proper event to the dialog -->
+      <if cond="event$.connectionid == out_connection_id">
+        <assign name="results" expr="'far_end_disconnect'" />
+        <send name="'dialog.transfer.complete'"
+              target="dialog_id"
+              targettype="'dialog'"
+              namelist="results" />
+        <!-- Update our state var back to the original state -->
+        <assign name="state0" expr="'in_vxml_session'" />
+      <else />
+        <!-- Set our state to show that the original caller is disconnected. -->
+        <assign name="state0" expr="'user_disconnect'" />
+        <dialogterminate dialogid="dialog_id"/>
+      </if>
+    </transition>
+
+    <!--
+         Deal with a "hotword" type event where the dialog
+         requests that we stop the transfer.
+    -->
+    <transition state="outgoing_call_active" event="dialog.terminatetransfer">
+      <!-- Change our state to show we are dealing with hotword stuff -->
+      <assign name="state0" expr="'hotword'" />
+
+      <!-- Cancel any maxtime events that are waiting to be fired -->
+      <if cond="maxtime_sendid != null">
+        <cancel sendid="maxtime_sendid"/>
+        <assign name="maxtime_sendid" expr="null"/>
+      </if>
+
+      <!-- unjoin our connections -->
+      <unjoin id1="in_connection_id" id2="out_connectioni_d"/>
+    </transition>
+
+    <!--
+         Calls have been unjoined.
+    -->
+    <transition state="hotword" event="conference.unjoined">
+      <!-- Rejoin the first connection to the dialog -->
+      <join id1="in_connection_id" id2="dialog_id"/>
+      <!-- Disconnect the outbound call -->
+      <disconnect connectionid="out_connection_id"/>
+    </transition>
+
+    <!--
+         Send an event to the dialog once we are all back together again.
+    -->
+    <transition state="hotword" event="conference.joined">
+      <!-- Build up our event -->
+      <assign name="results" expr="'near_end_disconnect'" />
+      <send name="'dialog.transfer.complete'"
+            target="dialog_id"
+            targettype="'dialog'"
+            namelist="results" />
+      <!-- Update our state var back to the dialogActive state -->
+      <assign name="state0" expr="'in_vxml_session'" />
+    </transition>
+
+    <!--
+         Deal with connection.disconnected events in the hotword state.
+         We are only going to deal with stuff if the event is
+         for the incoming call.
+    -->
+    <transition state="hotword" event="connection.disconnected">
+      <if cond="event$.connectionid == in_connection_id">
+        <dialogterminate dialogid="dialog_id"/>
+        <!-- Update our state var to the userDisconnect state -->
+        <assign name="state0" expr="'user_disconnect'" />
+      </if>
+    </transition>
+
+    <!--
+         Deal with the maxtime event during a call transfer.
+         Should this happen we just disconnect the outbound call leg
+         and get back to the dialogActive state.
+         Step one is to disconnect the call...
+    -->
+    <transition state="outgoing_call_active" event="vxml_maxtime">
+      <assign name="maxtime_sendid" expr="null"/>
+      <assign name="state0" expr="'maxtime'" />
+      <disconnect connectionid="out_connection_id"/>
+    </transition>
+
+    <!--
+         Once we have the disconnect event we verify that we
+         got it for the outbound call and rejoin the dialog to the
+         inbound call. If the inbound call disconnected
+         we are going to go on and forward the event along
+         and wait for the dialog to exit.
+    -->
+    <transition state="maxtime" event="connection.disconnected">
+      <if cond="event$.connectionid == out_connection_id">
+        <join id1="dialog_id" id2="in_connection_id"/>
+        <else />
+        <dialogterminate dialogid="dialog_id"/>
+      </if>
+    </transition>
+
+    <!--
+         We are rejoined. Update our state and send the transfer
+         event back to the dialog.
+    -->
+    <transition state="maxtime" event="conference.joined">
+      <!-- Update our state var back to the dialogActive state -->
+      <assign name="state0" expr="'in_vxml_session'" />
+      <assign name="results" expr="'maxtime_disconnect'" />
+      <send name="'dialog.transfer.complete'"
+            target="dialog_id"
+            targettype="'dialog'"
+            namelist="results" />
+    </transition>
+
+    <!--
+        Dialog has exited while we were in a hotword state.
+        We just are going to exit from this CCXML session...
+    -->
+    <transition state="maxtime" event="dialog.exit">
+      <exit/>
+    </transition>
+
+    <!--
+         Deal with events out of above state machine may come in
+         =======================================================
+    -->
+
+    <!--
+         Make sure that we deal with any extra dialog events
+         by ending the session.
+
+         TODO: Deal with each event appropriately
+    -->
+    <transition event="dialog.*">
+      <exit/>
+    </transition>
+
+    <!--
+         And do the same for any exit events.
+    -->
+    <transition event="error.*" >
+      <exit/>
+    </transition>
+
+    <!--
+         And last but not least catch any connection.disconnect
+         events that made it past us.
+    -->
+    <transition event="connection.disconnected">
+      <exit/>
+    </transition>
+  </eventprocessor>
+</ccxml>

@@ -1,0 +1,322 @@
+[2021-02-16 13:39:34.601 #12896] INFO : Initializing DialogModule
+[2021-02-16 13:39:34.601 #12896] INFO :   ruby_version                   : 2.5.3-p105 (2018-10-18)
+[2021-02-16 13:39:34.601 #12896] INFO :   rack_env                       : development
+[2021-02-16 13:39:34.601 #12896] INFO :   amivoice_dialog_module_version : 1.2.2
+[2021-02-16 13:39:34.601 #12896] INFO :   application_root_path          : /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app
+[2021-02-16 13:39:34.601 #12896] INFO :   default_external_encoding      : UTF-8
+[2021-02-16 13:39:34.602 #12896] INFO :   default_internal_encoding      : UTF-8
+[2021-02-16 13:39:34.602 #12896] INFO :   language                       : th-TH
+[2021-02-16 13:39:34.602 #12896] INFO :   platform                       : genesys
+[2021-02-16 13:39:34.602 #12896] INFO :   redis_server                   : localhost
+[2021-02-16 13:39:34.602 #12896] INFO :   redis_server_port              : 6379
+[2021-02-16 13:39:34.602 #12896] INFO :   audio_prompt_path              : /prompts/
+[2021-02-16 13:39:34.602 #12896] INFO :   grammar_path                   : /grammars/
+[2021-02-16 13:39:34.602 #12896] INFO :   enable_tuning_tools            : false
+[2021-02-16 13:39:34.602 #12896] INFO :   tuning_tools_site              : http://localhost:3000
+[2021-02-16 13:39:34.602 #12896] INFO :   log_path                       : log/amivoice_dialog_module
+[2021-02-16 13:39:34.602 #12896] INFO :   log_level                      : info
+[2021-02-16 13:39:34.602 #12896] INFO :   enable_log_in_vxml             : true
+[2021-02-16 13:39:34.602 #12896] INFO :   log_http_method                : get
+[2021-02-16 13:39:34.602 #12896] INFO :   is_a_part_of_call_flow         : false
+[2021-02-16 13:39:34.602 #12896] INFO :   mmivr_enable                   : false
+[2021-02-16 13:39:34.602 #12896] INFO :   gvp_extension_enable           : false
+[2021-02-16 13:39:34.602 #12896] INFO :   say_command                    : /usr/bin/say
+[2021-02-16 13:39:34.602 #12896] INFO :   sox_command                    : /usr/local/bin/sox
+[2021-02-16 13:39:34.602 #12896] INFO :   use_server_time                : true
+[2021-02-16 13:39:34.602 #12896] INFO :   keep_vxml                      : false
+[2021-02-16 13:39:34.602 #12896] INFO :   enable_prompt_log              : false
+[2021-02-16 13:39:34.602 #12896] INFO :   use_json                       : true
+[2021-02-16 13:39:34.602 #12896] INFO :   next_main_enabled              : true
+[2021-02-16 13:39:34.602 #12896] INFO :   session_expire_sec             : 86400
+[2021-02-16 13:39:34.602 #12896] INFO :   enable_prompt_uploader         : false
+[2021-02-16 13:39:34.602 #12896] INFO :   enable_dialog_console          : false
+[2021-02-16 13:39:34.602 #12896] INFO :   dialog_console_filename        : config/dialog.yml
+[2021-02-16 13:39:34.605 #12896] INFO : Initializing application
+[2021-02-16 13:39:34.605 #12896] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/lib/version.rb
+[2021-02-16 13:39:34.605 #12896] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/lib/application_helper.rb
+[2021-02-16 13:39:34.615 #12896] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/config/dialplan_v2
+[2021-02-16 13:39:34.617 #12896] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/named_prompt
+[2021-02-16 13:39:34.618 #12896] INFO :   /Users/Apisak/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/gems/amivoice_dialog_module-1.2.2/system/dialog_modules/system_base_dialog
+[2021-02-16 13:39:34.620 #12896] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/dialog_modules/application_base_dialog.rb
+[2021-02-16 13:39:34.621 #12896] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/too_many_errors_block.rb
+[2021-02-16 13:39:34.621 #12896] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/disconnected_block.rb
+[2021-02-16 13:39:34.622 #12896] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/return_block.rb
+[2021-02-16 13:39:34.622 #12896] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/system_error_block.rb
+[2021-02-16 13:39:34.622 #12896] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/agent_transfer_block.rb
+[2021-02-16 13:39:34.623 #12896] INFO : Connecting to Redis server localhost:6379
+[2021-02-16 13:48:52.535 #17827] INFO : Initializing DialogModule
+[2021-02-16 13:48:52.535 #17827] INFO :   ruby_version                   : 2.5.3-p105 (2018-10-18)
+[2021-02-16 13:48:52.535 #17827] INFO :   rack_env                       : development
+[2021-02-16 13:48:52.535 #17827] INFO :   amivoice_dialog_module_version : 1.2.2
+[2021-02-16 13:48:52.535 #17827] INFO :   application_root_path          : /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app
+[2021-02-16 13:48:52.536 #17827] INFO :   default_external_encoding      : UTF-8
+[2021-02-16 13:48:52.536 #17827] INFO :   default_internal_encoding      : UTF-8
+[2021-02-16 13:48:52.536 #17827] INFO :   language                       : th-TH
+[2021-02-16 13:48:52.536 #17827] INFO :   platform                       : genesys
+[2021-02-16 13:48:52.536 #17827] INFO :   redis_server                   : localhost
+[2021-02-16 13:48:52.536 #17827] INFO :   redis_server_port              : 6379
+[2021-02-16 13:48:52.536 #17827] INFO :   audio_prompt_path              : /prompts/
+[2021-02-16 13:48:52.536 #17827] INFO :   grammar_path                   : /grammars/
+[2021-02-16 13:48:52.536 #17827] INFO :   enable_tuning_tools            : false
+[2021-02-16 13:48:52.536 #17827] INFO :   tuning_tools_site              : http://localhost:3000
+[2021-02-16 13:48:52.536 #17827] INFO :   log_path                       : log/amivoice_dialog_module
+[2021-02-16 13:48:52.536 #17827] INFO :   log_level                      : info
+[2021-02-16 13:48:52.536 #17827] INFO :   enable_log_in_vxml             : true
+[2021-02-16 13:48:52.536 #17827] INFO :   log_http_method                : get
+[2021-02-16 13:48:52.536 #17827] INFO :   is_a_part_of_call_flow         : false
+[2021-02-16 13:48:52.536 #17827] INFO :   mmivr_enable                   : false
+[2021-02-16 13:48:52.536 #17827] INFO :   gvp_extension_enable           : false
+[2021-02-16 13:48:52.536 #17827] INFO :   say_command                    : /usr/bin/say
+[2021-02-16 13:48:52.536 #17827] INFO :   sox_command                    : /usr/local/bin/sox
+[2021-02-16 13:48:52.536 #17827] INFO :   use_server_time                : true
+[2021-02-16 13:48:52.536 #17827] INFO :   keep_vxml                      : false
+[2021-02-16 13:48:52.536 #17827] INFO :   enable_prompt_log              : false
+[2021-02-16 13:48:52.536 #17827] INFO :   use_json                       : true
+[2021-02-16 13:48:52.536 #17827] INFO :   next_main_enabled              : true
+[2021-02-16 13:48:52.536 #17827] INFO :   session_expire_sec             : 86400
+[2021-02-16 13:48:52.536 #17827] INFO :   enable_prompt_uploader         : false
+[2021-02-16 13:48:52.537 #17827] INFO :   enable_dialog_console          : false
+[2021-02-16 13:48:52.537 #17827] INFO :   dialog_console_filename        : config/dialog.yml
+[2021-02-16 13:48:52.540 #17827] INFO : Initializing application
+[2021-02-16 13:48:52.540 #17827] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/lib/version.rb
+[2021-02-16 13:48:52.540 #17827] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/lib/application_helper.rb
+[2021-02-16 13:48:52.541 #17827] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/config/dialplan_v2
+[2021-02-16 13:48:52.541 #17827] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/named_prompt
+[2021-02-16 13:48:52.542 #17827] INFO :   /Users/Apisak/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/gems/amivoice_dialog_module-1.2.2/system/dialog_modules/system_base_dialog
+[2021-02-16 13:48:52.545 #17827] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/dialog_modules/application_base_dialog.rb
+[2021-02-16 13:48:52.547 #17827] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/too_many_errors_block.rb
+[2021-02-16 13:48:52.547 #17827] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/disconnected_block.rb
+[2021-02-16 13:48:52.548 #17827] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/return_block.rb
+[2021-02-16 13:48:52.549 #17827] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/system_error_block.rb
+[2021-02-16 13:48:52.549 #17827] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/agent_transfer_block.rb
+[2021-02-16 13:48:52.549 #17827] INFO : Connecting to Redis server localhost:6379
+[2021-02-16 13:49:26.534 #18139] INFO : Initializing DialogModule
+[2021-02-16 13:49:26.534 #18139] INFO :   ruby_version                   : 2.5.3-p105 (2018-10-18)
+[2021-02-16 13:49:26.534 #18139] INFO :   rack_env                       : development
+[2021-02-16 13:49:26.534 #18139] INFO :   amivoice_dialog_module_version : 1.2.2
+[2021-02-16 13:49:26.534 #18139] INFO :   application_root_path          : /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app
+[2021-02-16 13:49:26.534 #18139] INFO :   default_external_encoding      : UTF-8
+[2021-02-16 13:49:26.534 #18139] INFO :   default_internal_encoding      : UTF-8
+[2021-02-16 13:49:26.534 #18139] INFO :   language                       : th-TH
+[2021-02-16 13:49:26.534 #18139] INFO :   platform                       : genesys
+[2021-02-16 13:49:26.534 #18139] INFO :   redis_server                   : localhost
+[2021-02-16 13:49:26.534 #18139] INFO :   redis_server_port              : 6379
+[2021-02-16 13:49:26.534 #18139] INFO :   audio_prompt_path              : /prompts/
+[2021-02-16 13:49:26.534 #18139] INFO :   grammar_path                   : /grammars/
+[2021-02-16 13:49:26.534 #18139] INFO :   enable_tuning_tools            : false
+[2021-02-16 13:49:26.534 #18139] INFO :   tuning_tools_site              : http://localhost:3000
+[2021-02-16 13:49:26.534 #18139] INFO :   log_path                       : log/amivoice_dialog_module
+[2021-02-16 13:49:26.534 #18139] INFO :   log_level                      : info
+[2021-02-16 13:49:26.534 #18139] INFO :   enable_log_in_vxml             : true
+[2021-02-16 13:49:26.534 #18139] INFO :   log_http_method                : get
+[2021-02-16 13:49:26.534 #18139] INFO :   is_a_part_of_call_flow         : false
+[2021-02-16 13:49:26.534 #18139] INFO :   mmivr_enable                   : false
+[2021-02-16 13:49:26.534 #18139] INFO :   gvp_extension_enable           : false
+[2021-02-16 13:49:26.534 #18139] INFO :   say_command                    : /usr/bin/say
+[2021-02-16 13:49:26.534 #18139] INFO :   sox_command                    : /usr/local/bin/sox
+[2021-02-16 13:49:26.534 #18139] INFO :   use_server_time                : true
+[2021-02-16 13:49:26.534 #18139] INFO :   keep_vxml                      : false
+[2021-02-16 13:49:26.534 #18139] INFO :   enable_prompt_log              : false
+[2021-02-16 13:49:26.535 #18139] INFO :   use_json                       : true
+[2021-02-16 13:49:26.535 #18139] INFO :   next_main_enabled              : true
+[2021-02-16 13:49:26.535 #18139] INFO :   session_expire_sec             : 86400
+[2021-02-16 13:49:26.535 #18139] INFO :   enable_prompt_uploader         : false
+[2021-02-16 13:49:26.535 #18139] INFO :   enable_dialog_console          : false
+[2021-02-16 13:49:26.535 #18139] INFO :   dialog_console_filename        : config/dialog.yml
+[2021-02-16 13:49:26.536 #18139] INFO : Initializing application
+[2021-02-16 13:49:26.536 #18139] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/lib/version.rb
+[2021-02-16 13:49:26.536 #18139] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/lib/application_helper.rb
+[2021-02-16 13:49:26.536 #18139] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/config/dialplan_v2
+[2021-02-16 13:49:26.536 #18139] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/named_prompt
+[2021-02-16 13:49:26.536 #18139] INFO :   /Users/Apisak/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/gems/amivoice_dialog_module-1.2.2/system/dialog_modules/system_base_dialog
+[2021-02-16 13:49:26.548 #18139] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/dialog_modules/application_base_dialog.rb
+[2021-02-16 13:49:26.549 #18139] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/too_many_errors_block.rb
+[2021-02-16 13:49:26.550 #18139] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/disconnected_block.rb
+[2021-02-16 13:49:26.550 #18139] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/return_block.rb
+[2021-02-16 13:49:26.552 #18139] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/system_error_block.rb
+[2021-02-16 13:49:26.553 #18139] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/agent_transfer_block.rb
+[2021-02-16 13:49:26.553 #18139] INFO : Connecting to Redis server localhost:6379
+[2021-02-16 13:50:28.826 #18774] INFO : Initializing DialogModule
+[2021-02-16 13:50:28.827 #18774] INFO :   ruby_version                   : 2.5.3-p105 (2018-10-18)
+[2021-02-16 13:50:28.827 #18774] INFO :   rack_env                       : development
+[2021-02-16 13:50:28.827 #18774] INFO :   amivoice_dialog_module_version : 1.2.2
+[2021-02-16 13:50:28.827 #18774] INFO :   application_root_path          : /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app
+[2021-02-16 13:50:28.827 #18774] INFO :   default_external_encoding      : UTF-8
+[2021-02-16 13:50:28.827 #18774] INFO :   default_internal_encoding      : UTF-8
+[2021-02-16 13:50:28.827 #18774] INFO :   language                       : th-TH
+[2021-02-16 13:50:28.827 #18774] INFO :   platform                       : genesys
+[2021-02-16 13:50:28.827 #18774] INFO :   redis_server                   : localhost
+[2021-02-16 13:50:28.827 #18774] INFO :   redis_server_port              : 6379
+[2021-02-16 13:50:28.827 #18774] INFO :   audio_prompt_path              : /prompts/
+[2021-02-16 13:50:28.827 #18774] INFO :   grammar_path                   : /grammars/
+[2021-02-16 13:50:28.827 #18774] INFO :   enable_tuning_tools            : false
+[2021-02-16 13:50:28.827 #18774] INFO :   tuning_tools_site              : http://localhost:3000
+[2021-02-16 13:50:28.827 #18774] INFO :   log_path                       : log/amivoice_dialog_module
+[2021-02-16 13:50:28.827 #18774] INFO :   log_level                      : info
+[2021-02-16 13:50:28.827 #18774] INFO :   enable_log_in_vxml             : true
+[2021-02-16 13:50:28.827 #18774] INFO :   log_http_method                : get
+[2021-02-16 13:50:28.827 #18774] INFO :   is_a_part_of_call_flow         : false
+[2021-02-16 13:50:28.827 #18774] INFO :   mmivr_enable                   : false
+[2021-02-16 13:50:28.827 #18774] INFO :   gvp_extension_enable           : false
+[2021-02-16 13:50:28.827 #18774] INFO :   say_command                    : /usr/bin/say
+[2021-02-16 13:50:28.827 #18774] INFO :   sox_command                    : /usr/local/bin/sox
+[2021-02-16 13:50:28.827 #18774] INFO :   use_server_time                : true
+[2021-02-16 13:50:28.827 #18774] INFO :   keep_vxml                      : false
+[2021-02-16 13:50:28.827 #18774] INFO :   enable_prompt_log              : false
+[2021-02-16 13:50:28.827 #18774] INFO :   use_json                       : true
+[2021-02-16 13:50:28.827 #18774] INFO :   next_main_enabled              : true
+[2021-02-16 13:50:28.827 #18774] INFO :   session_expire_sec             : 86400
+[2021-02-16 13:50:28.827 #18774] INFO :   enable_prompt_uploader         : false
+[2021-02-16 13:50:28.827 #18774] INFO :   enable_dialog_console          : false
+[2021-02-16 13:50:28.827 #18774] INFO :   dialog_console_filename        : config/dialog.yml
+[2021-02-16 13:50:28.828 #18774] INFO : Initializing application
+[2021-02-16 13:50:28.828 #18774] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/lib/version.rb
+[2021-02-16 13:50:28.828 #18774] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/lib/application_helper.rb
+[2021-02-16 13:50:28.829 #18774] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/config/dialplan_v2
+[2021-02-16 13:50:28.829 #18774] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/named_prompt
+[2021-02-16 13:50:28.829 #18774] INFO :   /Users/Apisak/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/gems/amivoice_dialog_module-1.2.2/system/dialog_modules/system_base_dialog
+[2021-02-16 13:50:28.834 #18774] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/dialog_modules/application_base_dialog.rb
+[2021-02-16 13:50:28.836 #18774] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/too_many_errors_block.rb
+[2021-02-16 13:50:28.836 #18774] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/disconnected_block.rb
+[2021-02-16 13:50:28.837 #18774] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/return_block.rb
+[2021-02-16 13:50:28.837 #18774] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/system_error_block.rb
+[2021-02-16 13:50:28.837 #18774] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/agent_transfer_block.rb
+[2021-02-16 13:50:28.838 #18774] INFO : Connecting to Redis server localhost:6379
+[2021-02-16 13:50:34.200 #18807] INFO : Initializing DialogModule
+[2021-02-16 13:50:34.200 #18807] INFO :   ruby_version                   : 2.5.3-p105 (2018-10-18)
+[2021-02-16 13:50:34.200 #18807] INFO :   rack_env                       : development
+[2021-02-16 13:50:34.200 #18807] INFO :   amivoice_dialog_module_version : 1.2.2
+[2021-02-16 13:50:34.200 #18807] INFO :   application_root_path          : /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app
+[2021-02-16 13:50:34.200 #18807] INFO :   default_external_encoding      : UTF-8
+[2021-02-16 13:50:34.200 #18807] INFO :   default_internal_encoding      : UTF-8
+[2021-02-16 13:50:34.200 #18807] INFO :   language                       : th-TH
+[2021-02-16 13:50:34.200 #18807] INFO :   platform                       : genesys
+[2021-02-16 13:50:34.200 #18807] INFO :   redis_server                   : localhost
+[2021-02-16 13:50:34.200 #18807] INFO :   redis_server_port              : 6379
+[2021-02-16 13:50:34.200 #18807] INFO :   audio_prompt_path              : /prompts/
+[2021-02-16 13:50:34.200 #18807] INFO :   grammar_path                   : /grammars/
+[2021-02-16 13:50:34.200 #18807] INFO :   enable_tuning_tools            : false
+[2021-02-16 13:50:34.200 #18807] INFO :   tuning_tools_site              : http://localhost:3000
+[2021-02-16 13:50:34.200 #18807] INFO :   log_path                       : log/amivoice_dialog_module
+[2021-02-16 13:50:34.200 #18807] INFO :   log_level                      : info
+[2021-02-16 13:50:34.201 #18807] INFO :   enable_log_in_vxml             : true
+[2021-02-16 13:50:34.201 #18807] INFO :   log_http_method                : get
+[2021-02-16 13:50:34.201 #18807] INFO :   is_a_part_of_call_flow         : false
+[2021-02-16 13:50:34.201 #18807] INFO :   mmivr_enable                   : false
+[2021-02-16 13:50:34.201 #18807] INFO :   gvp_extension_enable           : false
+[2021-02-16 13:50:34.201 #18807] INFO :   say_command                    : /usr/bin/say
+[2021-02-16 13:50:34.201 #18807] INFO :   sox_command                    : /usr/local/bin/sox
+[2021-02-16 13:50:34.201 #18807] INFO :   use_server_time                : true
+[2021-02-16 13:50:34.201 #18807] INFO :   keep_vxml                      : false
+[2021-02-16 13:50:34.201 #18807] INFO :   enable_prompt_log              : false
+[2021-02-16 13:50:34.201 #18807] INFO :   use_json                       : true
+[2021-02-16 13:50:34.201 #18807] INFO :   next_main_enabled              : true
+[2021-02-16 13:50:34.201 #18807] INFO :   session_expire_sec             : 86400
+[2021-02-16 13:50:34.201 #18807] INFO :   enable_prompt_uploader         : false
+[2021-02-16 13:50:34.201 #18807] INFO :   enable_dialog_console          : false
+[2021-02-16 13:50:34.201 #18807] INFO :   dialog_console_filename        : config/dialog.yml
+[2021-02-16 13:50:34.202 #18807] INFO : Initializing application
+[2021-02-16 13:50:34.202 #18807] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/lib/version.rb
+[2021-02-16 13:50:34.202 #18807] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/lib/application_helper.rb
+[2021-02-16 13:50:34.202 #18807] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/config/dialplan_v2
+[2021-02-16 13:50:34.203 #18807] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/named_prompt
+[2021-02-16 13:50:34.203 #18807] INFO :   /Users/Apisak/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/gems/amivoice_dialog_module-1.2.2/system/dialog_modules/system_base_dialog
+[2021-02-16 13:50:34.204 #18807] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/dialog_modules/application_base_dialog.rb
+[2021-02-16 13:50:34.204 #18807] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/too_many_errors_block.rb
+[2021-02-16 13:50:34.204 #18807] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/disconnected_block.rb
+[2021-02-16 13:50:34.205 #18807] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/return_block.rb
+[2021-02-16 13:50:34.205 #18807] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/system_error_block.rb
+[2021-02-16 13:50:34.205 #18807] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/agent_transfer_block.rb
+[2021-02-16 13:50:34.206 #18807] INFO : Connecting to Redis server localhost:6379
+[2021-02-16 13:52:06.686 #19605] INFO : Initializing DialogModule
+[2021-02-16 13:52:06.686 #19605] INFO :   ruby_version                   : 2.5.3-p105 (2018-10-18)
+[2021-02-16 13:52:06.686 #19605] INFO :   rack_env                       : development
+[2021-02-16 13:52:06.686 #19605] INFO :   amivoice_dialog_module_version : 1.2.2
+[2021-02-16 13:52:06.686 #19605] INFO :   application_root_path          : /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app
+[2021-02-16 13:52:06.686 #19605] INFO :   default_external_encoding      : UTF-8
+[2021-02-16 13:52:06.686 #19605] INFO :   default_internal_encoding      : UTF-8
+[2021-02-16 13:52:06.686 #19605] INFO :   language                       : th-TH
+[2021-02-16 13:52:06.686 #19605] INFO :   platform                       : genesys
+[2021-02-16 13:52:06.686 #19605] INFO :   redis_server                   : localhost
+[2021-02-16 13:52:06.686 #19605] INFO :   redis_server_port              : 6379
+[2021-02-16 13:52:06.686 #19605] INFO :   audio_prompt_path              : /prompts/
+[2021-02-16 13:52:06.686 #19605] INFO :   grammar_path                   : /grammars/
+[2021-02-16 13:52:06.686 #19605] INFO :   enable_tuning_tools            : false
+[2021-02-16 13:52:06.686 #19605] INFO :   tuning_tools_site              : http://localhost:3000
+[2021-02-16 13:52:06.686 #19605] INFO :   log_path                       : log/amivoice_dialog_module
+[2021-02-16 13:52:06.686 #19605] INFO :   log_level                      : info
+[2021-02-16 13:52:06.686 #19605] INFO :   enable_log_in_vxml             : true
+[2021-02-16 13:52:06.686 #19605] INFO :   log_http_method                : get
+[2021-02-16 13:52:06.687 #19605] INFO :   is_a_part_of_call_flow         : false
+[2021-02-16 13:52:06.687 #19605] INFO :   mmivr_enable                   : false
+[2021-02-16 13:52:06.687 #19605] INFO :   gvp_extension_enable           : false
+[2021-02-16 13:52:06.687 #19605] INFO :   say_command                    : /usr/bin/say
+[2021-02-16 13:52:06.687 #19605] INFO :   sox_command                    : /usr/local/bin/sox
+[2021-02-16 13:52:06.687 #19605] INFO :   use_server_time                : true
+[2021-02-16 13:52:06.687 #19605] INFO :   keep_vxml                      : false
+[2021-02-16 13:52:06.687 #19605] INFO :   enable_prompt_log              : false
+[2021-02-16 13:52:06.687 #19605] INFO :   use_json                       : true
+[2021-02-16 13:52:06.687 #19605] INFO :   next_main_enabled              : true
+[2021-02-16 13:52:06.687 #19605] INFO :   session_expire_sec             : 86400
+[2021-02-16 13:52:06.687 #19605] INFO :   enable_prompt_uploader         : false
+[2021-02-16 13:52:06.687 #19605] INFO :   enable_dialog_console          : false
+[2021-02-16 13:52:06.687 #19605] INFO :   dialog_console_filename        : config/dialog.yml
+[2021-02-16 13:52:06.688 #19605] INFO : Initializing application
+[2021-02-16 13:52:06.688 #19605] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/lib/version.rb
+[2021-02-16 13:52:06.688 #19605] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/lib/application_helper.rb
+[2021-02-16 13:52:06.688 #19605] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/config/dialplan_v2
+[2021-02-16 13:52:06.688 #19605] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/named_prompt
+[2021-02-16 13:52:06.689 #19605] INFO :   /Users/Apisak/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/gems/amivoice_dialog_module-1.2.2/system/dialog_modules/system_base_dialog
+[2021-02-16 13:52:06.693 #19605] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/dialog_modules/application_base_dialog.rb
+[2021-02-16 13:52:06.695 #19605] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/too_many_errors_block.rb
+[2021-02-16 13:52:06.696 #19605] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/disconnected_block.rb
+[2021-02-16 13:52:06.696 #19605] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/return_block.rb
+[2021-02-16 13:52:06.696 #19605] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/system_error_block.rb
+[2021-02-16 13:52:06.697 #19605] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/agent_transfer_block.rb
+[2021-02-16 13:52:06.697 #19605] INFO : Connecting to Redis server localhost:6379
+[2021-02-16 13:54:47.482 #21031] INFO : Initializing DialogModule
+[2021-02-16 13:54:47.483 #21031] INFO :   ruby_version                   : 2.5.3-p105 (2018-10-18)
+[2021-02-16 13:54:47.483 #21031] INFO :   rack_env                       : development
+[2021-02-16 13:54:47.483 #21031] INFO :   amivoice_dialog_module_version : 1.2.2
+[2021-02-16 13:54:47.483 #21031] INFO :   application_root_path          : /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app
+[2021-02-16 13:54:47.483 #21031] INFO :   default_external_encoding      : UTF-8
+[2021-02-16 13:54:47.483 #21031] INFO :   default_internal_encoding      : UTF-8
+[2021-02-16 13:54:47.483 #21031] INFO :   language                       : th-TH
+[2021-02-16 13:54:47.483 #21031] INFO :   platform                       : genesys
+[2021-02-16 13:54:47.483 #21031] INFO :   redis_server                   : localhost
+[2021-02-16 13:54:47.483 #21031] INFO :   redis_server_port              : 6379
+[2021-02-16 13:54:47.483 #21031] INFO :   audio_prompt_path              : /prompts/
+[2021-02-16 13:54:47.483 #21031] INFO :   grammar_path                   : /grammars/
+[2021-02-16 13:54:47.483 #21031] INFO :   enable_tuning_tools            : false
+[2021-02-16 13:54:47.483 #21031] INFO :   tuning_tools_site              : http://localhost:3000
+[2021-02-16 13:54:47.483 #21031] INFO :   log_path                       : log/amivoice_dialog_module
+[2021-02-16 13:54:47.483 #21031] INFO :   log_level                      : info
+[2021-02-16 13:54:47.483 #21031] INFO :   enable_log_in_vxml             : true
+[2021-02-16 13:54:47.483 #21031] INFO :   log_http_method                : get
+[2021-02-16 13:54:47.483 #21031] INFO :   is_a_part_of_call_flow         : false
+[2021-02-16 13:54:47.483 #21031] INFO :   mmivr_enable                   : false
+[2021-02-16 13:54:47.483 #21031] INFO :   gvp_extension_enable           : false
+[2021-02-16 13:54:47.483 #21031] INFO :   say_command                    : /usr/bin/say
+[2021-02-16 13:54:47.483 #21031] INFO :   sox_command                    : /usr/local/bin/sox
+[2021-02-16 13:54:47.483 #21031] INFO :   use_server_time                : true
+[2021-02-16 13:54:47.483 #21031] INFO :   keep_vxml                      : false
+[2021-02-16 13:54:47.484 #21031] INFO :   enable_prompt_log              : false
+[2021-02-16 13:54:47.484 #21031] INFO :   use_json                       : true
+[2021-02-16 13:54:47.484 #21031] INFO :   next_main_enabled              : true
+[2021-02-16 13:54:47.484 #21031] INFO :   session_expire_sec             : 86400
+[2021-02-16 13:54:47.484 #21031] INFO :   enable_prompt_uploader         : false
+[2021-02-16 13:54:47.484 #21031] INFO :   enable_dialog_console          : false
+[2021-02-16 13:54:47.484 #21031] INFO :   dialog_console_filename        : config/dialog.yml
+[2021-02-16 13:54:47.486 #21031] INFO : Initializing application
+[2021-02-16 13:54:47.486 #21031] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/lib/version.rb
+[2021-02-16 13:54:47.486 #21031] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/lib/application_helper.rb
+[2021-02-16 13:54:47.487 #21031] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/config/dialplan_v2
+[2021-02-16 13:54:47.509 #21031] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/named_prompt
+[2021-02-16 13:54:47.512 #21031] INFO :   /Users/Apisak/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/gems/amivoice_dialog_module-1.2.2/system/dialog_modules/system_base_dialog
+[2021-02-16 13:54:47.518 #21031] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/dialog_modules/application_base_dialog.rb
+[2021-02-16 13:54:47.519 #21031] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/too_many_errors_block.rb
+[2021-02-16 13:54:47.520 #21031] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/disconnected_block.rb
+[2021-02-16 13:54:47.520 #21031] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/return_block.rb
+[2021-02-16 13:54:47.520 #21031] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/system_error_block.rb
+[2021-02-16 13:54:47.520 #21031] INFO :   /Users/Apisak/Desktop/Virtual Agent Compact Project/call_flow_app/virtual_agent_compact_app/app/blocks/agent_transfer_block.rb
+[2021-02-16 13:54:47.535 #21031] INFO : Connecting to Redis server localhost:6379

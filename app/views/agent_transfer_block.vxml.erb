@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml xmlns="http://www.w3.org/2001/vxml"
+      xml:lang="<%=@language%>"
+      version="2.1"
+      application="root.vxml"
+      <% if Settings.gvp_extension_enable %>
+      xmlns:gvp="http://www.genesyslab.com/2006/vxml21-extension"
+      <% end %>
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.w3.org/2001/vxml
+                          http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.xsd">
+
+  <form id="<%=@block_name%>">
+    <block name="<%=@block_name%>">
+      <script>
+        var IntentID = '901';
+        var prompts = <%=JSON.pretty_generate(prompt_path(AgentTransferBlock.agent_transfer_prompts))%>;
+      </script>
+      <%= log("Transfer to agent") %>
+
+      <%- unless AgentTransferBlock.agent_transfer_prompts.empty? %>
+      <prompt bargein="false">
+        <foreach item="prompt" array="prompts">
+          <audio expr="prompt" />
+        </foreach>
+      </prompt>
+      <%- end %>
+
+      <%- if Settings.is_a_part_of_call_flow %>
+      <return namelist="IntentID" />
+      <%- else %>
+      <exit />
+      <%- end %>
+    </block>
+  </form>
+</vxml>

@@ -1,0 +1,39 @@
+defaults: &defaults
+  language:                       'th-TH'
+  platform:                       'genesys'
+  redis_server:                   'localhost'
+  redis_server_port:              6379
+  audio_prompt_path:              '/prompts/'
+  grammar_path:                   '/grammars/'
+  enable_tuning_tools:            false
+  tuning_tools_site:              'http://localhost:3000'
+  log_path:                       '/var/aminets/log/virtual_agent_compact_app'
+  log_level:                      'info'
+  enable_log_in_vxml:             true
+  log_http_method:                'get'
+  is_a_part_of_call_flow:         false
+  mmivr_enable:                   false
+  gvp_extension_enable:           false
+  say_command:                    /usr/bin/say
+  sox_command:                    /usr/local/bin/sox
+  use_server_time:                true
+  keep_vxml:                      false
+  enable_prompt_log:              false
+  use_json:                       true
+  next_main_enabled:              true
+  session_expire_sec:             86400
+  enable_prompt_uploader:         false
+  enable_dialog_console:          false
+  dialog_console_filename:        config/dialog.yml
+
+test:
+  <<: *defaults
+  log_level:                      'fatal'
+  log_path:                       'log/amivoice_dialog_module'
+
+development:
+  <<: *defaults
+  log_path:                       'log/amivoice_dialog_module'
+
+production:
+  <<: *defaults

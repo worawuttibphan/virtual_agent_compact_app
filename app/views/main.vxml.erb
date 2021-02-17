@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml xmlns="http://www.w3.org/2001/vxml"
+      xml:lang="<%=@language%>"
+      version="2.1"
+      application="root.vxml"
+      <% if Settings.gvp_extension_enable %>
+      xmlns:gvp="http://www.genesyslab.com/2006/vxml21-extension"
+      <% end %>
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.w3.org/2001/vxml
+                          http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.xsd">
+
+  <form id="main">
+    <%= log("main.vxml started") %>
+    <script>
+      var request_parameters_key = "<%=@request_parameters_key%>";
+    </script>
+
+    <block name="call_starting">
+      <%- if Settings.mmivr_enable %>
+      <script>
+        var mmivr_base_url = "<%=Settings.mmivr_base_url%>";
+        var mmivr_appid = <%=Settings.mmivr_appid%>;
+        var mmivr_action = 1;
+      </script>
+      <data name="mmivr_call_start" fetchhint="safe" method="get" srcexpr="mmivr_base_url" namelist="mmivr_appid mmivr_action ani logging_tag" />
+      <%= log("MMIVR Response (Call Start)", "mmivr_call_start") %>
+      <%- end %>
+    </block>
+
+    <subdialog name="entry_point" src="entry_point" namelist="ani dnis logging_tag request_parameters_key">
+      <filled>
+      </filled>
+    </subdialog>
+
+    <block name="call_ending">
+      <script>
+        <%-
+        # Do not remove below lines.  It's necessary to keep call_detail_logs in Tuning Tools.
+        %>
+        application.call_end_time = (new Date()).toString();
+        application.call_end_action_is_called = application.call_end_action_is_called ||
+                                                entry_point.call_end_action_is_called;
+        application.call_result = application.call_result ||
+                                  entry_point.call_result ||
+                                  entry_point.dialog_result;
+        application.error_count += entry_point.error_count;
+        var dialog_name = entry_point.current_dialog_name;
+        var destination = "000"
+        <%-
+        # For developer:
+        # You can set return values here to pass data to other VXML if it's necessary.  Please see below
+        # comment too.  You need to edit <return> element also.  All variables described here must be
+        # prepared in the last dialog module.
+        #
+        # For example,
+        #
+        # var IntentID = entry_point.IntentID;
+        # var CreditCardNumber= entry_point.CreditCardNumber;
+        %>
+      </script>
+      <if cond="application.call_end_action_is_called == false" >
+        <%= call_end_action("dialog_name destination") %>
+        <script>
+          application.call_end_action_is_called = true;
+        </script>
+      </if>
+      <%-
+      # For developer:
+      # When you want to return values to other VXML, all variables should be described in namelist in
+      # the <return> element block below.  For example,
+      #
+      # <return namelist="IntentID CreditCardNumber" />
+      %>
+      <%- if Settings.is_a_part_of_call_flow %>
+      <return/>
+      <%- else %>
+      <exit />
+      <%- end %>
+    </block>
+
+    <!-- Event Handle -->
+    <catch event='connection.disconnect'>
+      <%= log("Event catched in main.vxml", "_message _event error_count") %>
+      <script>
+        if( application.call_result == '') {
+            application.call_result = 'H';
+        }
+      </script>
+      <goto nextitem="call_ending" />
+    </catch>
+
+    <catch event='error'>
+      <%= log("Event catched in main.vxml", "_message _event error_count") %>
+      <if cond="application.error_count == 1" >
+        <script>
+          application.error_count += 1;
+          application.call_result = 'E';
+        </script>
+        <goto nextitem="call_ending" />
+      <else />
+        <%- if Settings.is_a_part_of_call_flow %>
+        <return />
+        <%- else %>
+        <exit />
+        <%- end %>
+      </if>
+    </catch>
+  </form>
+</vxml>

@@ -1,0 +1,40 @@
+#JSGF V1.0 UTF8 th;
+
+grammar yesno_th;
+
+public <yesno_th> = (<main> | <noise>);
+
+<main> = ( <yes> {Yes}
+       	 | <no>  {No}
+         );
+
+<yes> = ( <affirmative> [ <k> ]
+        | <k>
+        );
+
+<no> = ( ไม่ [ <affirmative> ] [ <k> ] );
+
+<affirmative> = ( ใช่
+                | ถูก
+                | ถูก ต้อง
+                );
+
+<k> = ( ค่ะ
+      | ครับ
+      | จ้ะ
+      );
+
+<noise> = ( <NULL>
+          | <GARBAGE>+
+          );
+
+//addWord ใช่ "ch ai"
+//addWord ถูก "th u: k"
+//addWord ต้อง "t oo: ng"
+//addWord ไม่ "m ai"
+//addWord จ้ะ "j a"
+//addWord จ้ะ "j a:"
+//addWord ค่ะ "kh a"
+//addWord ค่ะ "kh a:"
+//addWord ครับ "kh r a p"
+//addWord ครับ "kh a p"

@@ -1,0 +1,13 @@
+welcome.wav                                 ようこそ、はじめてのDialog Moduleアプリケーションです。
+please_say_yes_or_no.wav                    はいか、いいえとおっしゃってください。
+sorry_i_cannot_understand_you.wav           申し訳ありません、よくわかりませんでした。
+sorry_i_cannot_understand_you_again.wav     申し訳ありません、また、よくわかりませんでした。
+sorry_i_cannot_hear_you.wav                 申し訳ありません、よく聞き取れませんでした。
+sorry_i_cannot_hear_you_again.wav           申し訳ありません、また、よく聞き取れませんでした。
+can_you_say_yes_or_no_again.wav             もう一度、はいか、いいえとおっしゃってください。
+can_you_say_again.wav                       もう一度、おっしゃってください。
+is_it_correct.wav                           でよろしいでしょうか？
+transfer_to_agent.wav                       コールセンターにおつなぎします。そのまましばらくお待ちください。
+service_unavailable.wav                     システムに技術的な問題が発生しました。
+please_say_your_message.wav                 もう一度メッセージをお話ください。
+thank_you.wav                               お電話ありがとうございました
