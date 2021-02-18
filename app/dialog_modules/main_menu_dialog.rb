@@ -37,8 +37,13 @@ class MainMenuDialog < ApplicationBaseDialog
   #
   grammar_name           "yesno.gram" # TODO: Please set your grammar
   max_retry              2
+  timeout                "3s"
+  complete_timeout       "0.8s"
+  incomplete_timeout     "1.0s"
+  speed_vs_accuracy      0.9
+  max_speech_timeout     "10s"
+  confidence_level       0.0
   confirmation_method    :always
-
   #
   #==Action
   #
@@ -67,8 +72,31 @@ class MainMenuDialog < ApplicationBaseDialog
     # TODO: Please describe action here and set appropriate next dialog.
     # The last value should be next dialog.  But note that this block does not allow
     # to use 'return'.
-    session.logger.info("action")
-    MainMenuDialog
+    if session[:result] != "failure" && session[:result].present?
+      if contrain_intention ### Check contrains Intention.
+        if count_intention < 1
+          if has_product || intention_belong_to
+            ### go to Flow C
+          else
+            if check_confirmation_never
+              ### go to Flow D
+            else
+              ### go to Flow E
+            end
+          end
+        else
+          ### tranfer to agent
+        end
+      elsif contrain_product ### Check contrains Product.
+        ### increse retry value
+        MainMenuDialog
+      else
+        ### increase reject
+        MainMenuDialog
+      end
+    else
+      MainMenuDialog
+    end
   end
 
 #  ending do |session, params|
